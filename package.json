@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/iondex.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/EHB-MCT/portfolio-starter-Taysir96/issues"
   },
-  "homepage": "https://github.com/EHB-MCT/portfolio-starter-Taysir96#readme",
-  "dependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "homepage": "https://github.com/EHB-MCT/portfolio-starter-Taysir96#readme"
 }
