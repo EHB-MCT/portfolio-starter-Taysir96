@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-starter-taysir96",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/iondex.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-MCT/portfolio-starter-Taysir96.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-MCT/portfolio-starter-Taysir96/issues"
+  },
+  "homepage": "https://github.com/EHB-MCT/portfolio-starter-Taysir96#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
