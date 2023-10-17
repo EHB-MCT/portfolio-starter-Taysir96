@@ -2,20 +2,20 @@
 const express = require('express');
 const app = express();
 
-// Definieer de poort waarop de server moet luisteren
+// Definieer de poort waarop de server moet luisteren, met een fallback naar poort 3000 als de omgevingsvariabele niet is ingesteld
 const port = process.env.PORT || 3000;
 
-// Importeer de knex-module voor database-interactie
-const knex = require('knex');
-const knexConfig = require('../knexfile'); // Zorg ervoor dat het juiste pad wordt opgegeven
+// Importeer de databaseverbinding
+const db = require('../db/database.js');
 
-// Maak een databaseverbinding met behulp van knex
-const db = knex(knexConfig.development);
+// Gebruik JSON-middleware om JSON-verzoeken te verwerken
+app.use(express.json());
 
-// Voer een eenvoudige query uit om te controleren of de databaseverbinding werkt
-db.raw("SELECT 1=1").then((result) => {
-    console.log(result);
-});
+// Importeer de gebruikersroutes
+const userRoutes = require('./routes/userRoutes');
+
+// Gebruik de gebruikersroutes in de applicatie
+app.use(userRoutes);
 
 // Definieer een route voor de hoofdpagina
 app.get('/', (req, res) => {

@@ -10,6 +10,7 @@ exports.up = function (knex) {
         table.string('last_name');
         table.string('email').unique();
         table.string('password');
+        table.string('userId');
         table.string('role');
         // Voeg hier andere kolommen toe indien nodig
     });
