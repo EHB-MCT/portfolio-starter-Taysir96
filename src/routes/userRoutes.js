@@ -54,4 +54,29 @@ router.post('/register', async (req, res) => {
     }
 });
 
+/**
+ * Endpoint voor het inloggen van een gebruiker.
+ */
+router.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;  // Verkrijg gebruikersgegevens van het verzoek
+
+        // Controleer of het e-mailadres al bestaat in de database
+        const existingUser = await db('users').where({ email }).first();
+        if (!existingUser) {
+            return res.status(400).json({ message: 'E-mailadres of wachtwoord is onjuist.' });
+        }
+
+        // Controleer of het wachtwoord overeenkomt met het wachtwoord in de database
+        if (password !== existingUser.password) {
+            return res.status(400).json({ message: 'E-mailadres of wachtwoord is onjuist.' });
+        }
+
+        res.status(200).json({ message: 'Gebruiker is ingelogd', user: existingUser });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Er is een fout opgetreden tijdens het inloggen' });
+    }
+});
+
 module.exports = router;
