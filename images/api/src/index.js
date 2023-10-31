@@ -22,6 +22,14 @@ app.get('/', (req, res) => {
     res.send('Welkom bij mijn project!');
 });
 
+// Definieer een route voor het afhandelen van onbekende routes
+app.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Deze route bestaat niet',
+    });
+});
+
+
 // Start de server en luister naar de opgegeven poort
 app.listen(port, (err) => {
     if (!err) {
