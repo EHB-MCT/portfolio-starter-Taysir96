@@ -17,6 +17,12 @@ const userRoutes = require('./routes/userRoutes');
 // Gebruik de gebruikersroutes in de applicatie
 app.use(userRoutes);
 
+//importeert de itemsroutes
+const itemsRoutes = require('./routes/itemsRoutes');
+
+// Gebruik de itemsroutes in de applicatie
+app.use(itemsRoutes);
+
 // Definieer een route voor de hoofdpagina
 app.get('/', (req, res) => {
     res.send('Welkom bij mijn project!');
