@@ -19,7 +19,7 @@ const doesEmailExist = async (email) => {
  * @returns {boolean} - True als het wachtwoord aan de vereisten voldoet, anders is het onwaar.
  */
 const isPasswordValid = (password) => {
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/;
     return passwordRegex.test(password);
 };
 
@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
         const user_id = uuidv4();
 
         // Voeg de gebruiker toe aan de database met de gegenereerde UUID
-        const [user] = await db('users').insert({ first_name, last_name, email, password, userId: user_id, role });
+        const [user] = await db('users').insert({ first_name, last_name, email, password, userId: user_id, role }).returning('*');
 
         res.status(201).json({ message: 'Gebruiker is aangemaakt', user: { first_name, last_name, email, userId: user_id, role } });
     } catch (error) {
