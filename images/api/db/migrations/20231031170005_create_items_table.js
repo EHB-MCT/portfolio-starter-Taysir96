@@ -5,7 +5,7 @@
 exports.up = function (knex) {
     return knex.schema.createTable('items', function (table) {
         table.increments('id').primary(); // Automatically generated numeric ID
-        table.string('itemsId').notNullable(); // Custom itemsId
+        table.string('itemsId').unique().notNullable(); // Custom itemsId
         table.string('name').notNullable();
         table.text('description');
         table.boolean('is_available').defaultTo(true); // Boolean column, default set to true (available)

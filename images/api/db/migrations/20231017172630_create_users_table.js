@@ -8,11 +8,10 @@ exports.up = function (knex) {
         table.increments('id').primary();
         table.string('first_name');
         table.string('last_name');
-        table.string('email').unique();
+        table.string('email').unique(); // Maak de "email" kolom uniek
         table.string('password');
-        table.string('userId');
+        table.string('userId').unique().notNullable();
         table.string('role');
-        // Voeg hier andere kolommen toe indien nodig
     });
 };
 
