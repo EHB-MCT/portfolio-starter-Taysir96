@@ -23,6 +23,12 @@ const itemsRoutes = require('./routes/itemsRoutes');
 // Gebruik de itemsroutes in de applicatie
 app.use(itemsRoutes);
 
+// Importeer de leningenroutes
+const loansRoutes = require('./routes/loansRoutes');
+
+// Gebruik de leningenroutes in de applicatie
+app.use(loansRoutes);
+
 // Definieer een route voor de hoofdpagina
 app.get('/', (req, res) => {
     res.send('Welkom bij mijn project!');
