@@ -4,9 +4,12 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-watch": "jest --watchAll --detectOpenHandles",
+    "test": "jest --detectOpenHandles",
     "start": "npm run migrate && nodemon src/index.js --legacy-watch",
-    "migrate": "knex migrate:latest"
+    "dev": "npm run migrate && npm run test-watch",
+    "migrate": "npx knex migrate:latest --cwd src/db/"
+
   },
   "repository": {
     "type": "git",
@@ -25,5 +28,10 @@
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "assert": "^2.1.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
   }
 }

@@ -2,7 +2,7 @@
 const knex = require('knex');
 
 // Importeer de knex-configuratie uit het knexfile
-const knexfile = require('../knexfile');
+const knexfile = require('./knexfile.js');
 
 // Maak een databaseverbinding met behulp van knex en de ontwikkelingsconfiguratie
 const db = knex(knexfile.development);

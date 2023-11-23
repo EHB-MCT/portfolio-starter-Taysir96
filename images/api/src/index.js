@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Importeer de databaseverbinding
-const db = require('../db/database.js');
+const db = require('./db/database.js');
 
 // Gebruik JSON-middleware om JSON-verzoeken te verwerken
 app.use(express.json());
