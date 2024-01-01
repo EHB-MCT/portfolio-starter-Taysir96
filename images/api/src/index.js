@@ -1,51 +1,50 @@
-// Importeer de express-module voor het maken van een webserver
+// Import the express module to create a web server
 const express = require('express');
 const app = express();
 
-// Definieer de poort waarop de server moet luisteren, met een fallback naar poort 3000 als de omgevingsvariabele niet is ingesteld
+// Define the port on which the server should listen, with a fallback to port 3000 if the environment variable is not set
 const port = process.env.PORT || 3000;
 
-// Importeer de databaseverbinding
+// Import the database connection
 const db = require('./db/database.js');
 
-// Gebruik JSON-middleware om JSON-verzoeken te verwerken
+// Use JSON middleware to handle JSON requests
 app.use(express.json());
 
-// Importeer de gebruikersroutes
+// Import the user routes
 const userRoutes = require('./routes/userRoutes');
 
-// Gebruik de gebruikersroutes in de applicatie
+// Use the user routes in the application
 app.use(userRoutes);
 
-//importeert de itemsroutes
+// Import the items routes
 const itemsRoutes = require('./routes/itemsRoutes');
 
-// Gebruik de itemsroutes in de applicatie
+// Use the items routes in the application
 app.use(itemsRoutes);
 
-// Importeer de leningenroutes
+// Import the loans routes
 const loansRoutes = require('./routes/loansRoutes');
 
-// Gebruik de leningenroutes in de applicatie
+// Use the loans routes in the application
 app.use(loansRoutes);
 
-// Definieer een route voor de hoofdpagina
+// Define a route for the home page
 app.get('/', (req, res) => {
-    res.send('Welkom bij mijn project!');
+    res.send('Welcome to my project!');
 });
 
-// Definieer een route voor het afhandelen van onbekende routes
+// Define a route for handling unknown routes
 app.use('*', (req, res) => {
     res.status(404).json({
-        message: 'Deze route bestaat niet',
+        message: 'This route does not exist',
     });
 });
 
-
-// Start de server en luister naar de opgegeven poort
+// Start the server and listen on the specified port
 app.listen(port, (err) => {
     if (!err) {
-        console.log(`De server luistert op poort ${port}`);
+        console.log(`Server is listening on port ${port}`);
     } else {
         console.error(err);
     }

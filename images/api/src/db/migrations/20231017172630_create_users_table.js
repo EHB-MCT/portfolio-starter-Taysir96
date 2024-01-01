@@ -1,24 +1,24 @@
 /**
- * Voert de migratie voor het aanmaken van de 'users'-tabel uit.
- * @param {import("knex").Knex} knex - Het Knex-object voor database-interactie.
- * @returns {Promise<void>} - Een Promise die wordt opgelost zodra de migratie is voltooid.
+ * Executes the migration to create the 'users' table.
+ * @param {import("knex").Knex} knex - The Knex object for database interaction.
+ * @returns {Promise<void>} - A Promise resolved once the migration is complete.
  */
 exports.up = function (knex) {
     return knex.schema.createTable('users', function (table) {
-        table.increments('id').primary();
-        table.string('first_name');
-        table.string('last_name');
-        table.string('email').unique(); // Maak de "email" kolom uniek
-        table.string('password');
-        table.string('userId').unique().notNullable();
-        table.string('role');
+        table.increments('id').primary(); // Incremental primary key
+        table.string('first_name'); // First name of the user
+        table.string('last_name'); // Last name of the user
+        table.string('email').unique(); // Unique email address
+        table.string('password'); // User password
+        table.string('userId').unique().notNullable(); // Unique and non-nullable user ID
+        table.string('role'); // Role of the user
     });
 };
 
 /**
- * Maakt de 'users'-tabel ongedaan door deze te verwijderen.
- * @param {import("knex").Knex} knex - Het Knex-object voor database-interactie.
- * @returns {Promise<void>} - Een Promise die wordt opgelost zodra de migratie is voltooid.
+ * Reverts the 'users' table creation by dropping it.
+ * @param {import("knex").Knex} knex - The Knex object for database interaction.
+ * @returns {Promise<void>} - A Promise resolved once the migration is complete.
  */
 exports.down = function (knex) {
     return knex.schema.dropTable('users');
