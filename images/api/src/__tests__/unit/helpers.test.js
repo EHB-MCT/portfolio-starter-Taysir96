@@ -1,4 +1,4 @@
-const { checkUserEmail } = require("../helpers/endpointHelpers.js");
+const { checkUserEmail } = require("../../helpers/endpointHelpers.js");
 
 test("check email", () => {
 
