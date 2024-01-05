@@ -7,7 +7,7 @@ on:
 env: 
   POSTGRES_USER: dev5
   POSTGRES_PASSWORD: test123
-  POSTGRES_DB: dev5
+  POSTGRES_DB: dev5 
   
 jobs:
 
