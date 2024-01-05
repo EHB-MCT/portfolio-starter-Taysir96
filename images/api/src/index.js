@@ -1,51 +1,59 @@
-// Importeer de express-module voor het maken van een webserver
-const express = require('express');
-const app = express();
+// // Import the express module to create a web server
+// const express = require('express');
+// const app = express();
 
-// Definieer de poort waarop de server moet luisteren, met een fallback naar poort 3000 als de omgevingsvariabele niet is ingesteld
+// // Define the port on which the server should listen, with a fallback to port 3000 if the environment variable is not set
+// const port = process.env.PORT || 3000;
+
+// // Import the database connection
+// const db = require('./db/database.js');
+
+// // Use JSON middleware to handle JSON requests
+// app.use(express.json());
+
+
+
+// // Import the items routes
+// const itemsRoutes = require('./routes/itemsRoutes');
+
+// // Use the items routes in the application
+// app.use(itemsRoutes);
+
+// // Import the loans routes
+// const loansRoutes = require('./routes/loansRoutes');
+
+// // Use the loans routes in the application
+// app.use(loansRoutes);
+
+// // Define a route for the home page
+// app.get('/', (req, res) => {
+//     res.send('Welcome to my project!');
+// });
+
+// // Define a route for handling unknown routes
+// app.use('*', (req, res) => {
+//     res.status(404).json({
+//         message: 'This route does not exist',
+//     });
+// });
+
+// // Start the server and listen on the specified port
+// app.listen(port, (err) => {
+//     if (!err) {
+//         console.log(`Server is listening on port ${port}`);
+//     } else {
+//         console.error(err);
+//     }
+// });
+
+const app = require('./app.js');
 const port = process.env.PORT || 3000;
 
-// Importeer de databaseverbinding
-const db = require('../db/database.js');
-
-// Gebruik JSON-middleware om JSON-verzoeken te verwerken
-app.use(express.json());
-
-// Importeer de gebruikersroutes
-const userRoutes = require('./routes/userRoutes');
-
-// Gebruik de gebruikersroutes in de applicatie
-app.use(userRoutes);
-
-//importeert de itemsroutes
-const itemsRoutes = require('./routes/itemsRoutes');
-
-// Gebruik de itemsroutes in de applicatie
-app.use(itemsRoutes);
-
-// Importeer de leningenroutes
-const loansRoutes = require('./routes/loansRoutes');
-
-// Gebruik de leningenroutes in de applicatie
-app.use(loansRoutes);
-
-// Definieer een route voor de hoofdpagina
-app.get('/', (req, res) => {
-    res.send('Welkom bij mijn project!');
-});
-
-// Definieer een route voor het afhandelen van onbekende routes
-app.use('*', (req, res) => {
-    res.status(404).json({
-        message: 'Deze route bestaat niet',
-    });
-});
 
 
-// Start de server en luister naar de opgegeven poort
 app.listen(port, (err) => {
     if (!err) {
-        console.log(`De server luistert op poort ${port}`);
+        console.log(`Server is listening on port ${port}`);
     } else {
         console.error(err);
     }
