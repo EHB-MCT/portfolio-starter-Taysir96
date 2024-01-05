@@ -10,8 +10,8 @@ exports.up = function (knex) {
         table.date('start_date').notNullable(); // Start date of the loan, not nullable
         table.date('end_date').notNullable(); // End date of the loan, not nullable
         table.text('description'); // Description of the loan
-        table.string('userId').unsigned().references('id').inTable('users'); // Foreign key referencing 'users'
-        table.string('itemsId').unsigned().references('id').inTable('items'); // Foreign key referencing 'items'
+        table.integer('userId').unsigned().references('id').inTable('users'); // Foreign key referencing 'users'
+        table.integer('itemsId').unsigned().references('id').inTable('items'); // Foreign key referencing 'items'
     });
 };
 
