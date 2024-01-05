@@ -1,36 +1,37 @@
-version: "3.2"
-
 services:
   api:
-    build: ./images/api
+    image: crshlab/cicdgroepa2023:latest
     ports:
-      - "3000:3000"
-    environment:
-      POSTGRES_USER:
+      - 8080:3000
+    environment: 
       POSTGRES_PASSWORD: 
-      POSTGRES_DB:
+      POSTGRES_USER: 
+      POSTGRES_DB: 
       POSTGRES_HOST: db
-      PORT: 3000
-    volumes:
-      - ./images/api/src:/usr/app/src
     depends_on:
       db:
         condition: service_healthy
     command: ["npm", "run", "citest"]
-
+    
   db:
-    image: postgres:latest
-    restart: always
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: dev5
-      POSTGRES_PASSWORD: test123
-      POSTGRES_DB: dev5
+      - 5432:5432
+    image: postgres:16.0
+    environment: 
+      POSTGRES_PASSWORD: 
+      POSTGRES_USER: 
+      POSTGRES_DB: 
+      POSTGRES_HOST_AUTH_METHOD: 
     volumes:
-      - ./_volumes/db/data:/var/lib/postgresql/data
+      - ./_volumes/store:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB "]
       interval: 5s
       timeout: 5s
       retries: 10
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30
