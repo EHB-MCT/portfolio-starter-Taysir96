@@ -1,4 +1,4 @@
-name: testflow
+name: TEST AND BUILD
 
 on:
   push:
