@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.2"
 
 services:
   api:
@@ -6,7 +6,6 @@ services:
     ports:
       - "3000:3000"
     environment:
-      NODE_ENV: development
       POSTGRES_USER: dev5
       POSTGRES_PASSWORD: test123
       POSTGRES_DB: dev5
@@ -36,8 +35,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
-watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30
