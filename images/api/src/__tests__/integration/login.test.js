@@ -3,15 +3,14 @@ const app = require('./../../app.js');
 const db = require('./../../db/database.js');
 describe('POST /login', () => {
     beforeAll(async () => {
-        // Voer eventuele voorbereidende stappen uit, zoals het maken van een testgebruiker in de database
         const testUser = {
+            userId: 'some-unique-id', // Add a unique userId value
             email: 'test@example.com',
             password: 'TestPassword',
         };
 
         await db('users').insert(testUser);
     });
-
     afterAll(async () => {
         // Voer eventuele opruimstappen uit, zoals het verwijderen van testgebruikers of het terugdraaien van database-wijzigingen
         await db('users').where({ email: 'test@example.com' }).del();
