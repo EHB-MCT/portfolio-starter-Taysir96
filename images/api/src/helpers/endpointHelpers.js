@@ -2,7 +2,7 @@
  * Checks the validity of a user email.
  *
  * @param {string} email - The email to be checked for validity.
- * @returns {boolean} - Returns true if the email is valid; otherwise, false.
+ * @returns {boolean} - `true` if the email is valid; otherwise, `false`.
  */
 function checkUserEmail(email) {
     // Validate email against specified criteria
