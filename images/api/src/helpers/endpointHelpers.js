@@ -7,7 +7,7 @@
 function checkUserEmail(email) {
     // Validate email against specified criteria
     if (
-        email === null ||
+        email == null ||
         email.length <= 1 ||
         typeof email !== "string" ||
         email.length >= 20
