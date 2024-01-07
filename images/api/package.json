@@ -1,0 +1,37 @@
+{
+  "name": "portfolio-starter-taysir96",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test-watch": " jest --watchAll --detectOpenHandles ",
+    "test": "jest --detectOpenHandles --forceExit",
+    "citest": "npx knex --cwd src/db/ migrate:latest && npm run test",
+    "start": "npx knex --cwd src/db/ migrate:latest && nodemon src/index.js --legacy-watch",
+    "dev": "npx knex migrate:latest --cwd src/db && npm run test-watch",
+    "migrate": "npx knex migrate:latest --cwd src/db"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-MCT/portfolio-starter-Taysir96.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-MCT/portfolio-starter-Taysir96/issues"
+  },
+  "homepage": "https://github.com/EHB-MCT/portfolio-starter-Taysir96#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "knex": "^3.0.1",
+    "mysql2": "^3.6.2",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "assert": "^2.1.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}
