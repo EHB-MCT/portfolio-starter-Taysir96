@@ -1,7 +1,11 @@
 const { checkUserEmail } = require("../../helpers/endpointHelpers.js");
 
-test("check email", () => {
+/**
+ * Test suite for the checkUserEmail function.
+ */
 
+test("check email", () => {
+    // Test cases for invalid email inputs
     expect(checkUserEmail("")).toBe(false); // empty string
     expect(checkUserEmail(null)).toBe(false);
     expect(checkUserEmail("i")).toBe(false);

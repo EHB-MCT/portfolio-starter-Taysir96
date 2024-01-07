@@ -3,6 +3,10 @@ const app = require('./../../app.js');
 const db = require('./../../db/database.js');
 const { v4: uuidv4 } = require('uuid');
 
+/**
+ * Test suite for the PUT /update-item/:itemsId endpoint.
+ */
+
 describe('PUT /update-item/:itemsId', () => {
     it('should update an item and return a success message', async () => {
         // Generate a new UUID for the item and insert it into the database
@@ -34,8 +38,9 @@ describe('PUT /update-item/:itemsId', () => {
         expect(updatedItem).toMatchObject(updatedData);
     });
 
-    // More tests for error cases...
-
+    /**
+        * Test case: Updating a non-existent item should return a 404 error.
+        */
     it('should return an error if the item does not exist', async () => {
         // Define the data for updating the item
         const updatedData = {
